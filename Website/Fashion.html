@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Accessories - StyleHub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b6b;
+        }
+
+        .balance-display {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            margin: 2rem 0;
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #ff6b6b10, #ee5a2410);
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-description {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Categories Section */
+        .categories-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            margin: 2rem 0;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .category-image {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .category-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            padding: 2rem 1rem 1rem;
+            color: white;
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .category-count {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Products Grid */
+        .products-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            margin: 2rem 0;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .product-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .product-badge.new {
+            background: #2ecc71;
+        }
+
+        .product-badge.hot {
+            background: #f39c12;
+        }
+
+        .product-badge.sale {
+            background: #e74c3c;
+        }
+
+        .product-badge.premium {
+            background: #9b59b6;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-category {
+            font-size: 0.9rem;
+            color: #ff6b6b;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .product-description {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .product-features {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .feature-tag {
+            background: #ffeaea;
+            color: #ff6b6b;
+            padding: 0.3rem 0.6rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stars {
+            color: #ffd700;
+        }
+
+        .rating-text {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .original-price {
+            font-size: 1.1rem;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .add-to-cart:hover {
+            transform: scale(1.05);
+        }
+
+        /* Filter Section */
+        .filter-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .filter-controls {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .filter-group label {
+            font-weight: 600;
+            color: #555;
+        }
+
+        .filter-group select {
+            padding: 0.8rem 1.2rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .filter-group select:focus {
+            outline: none;
+            border-color: #ff6b6b;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem 0;
+            margin-top: 4rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">StyleHub</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="balance-display">
+                Balance: $<span id="balance">2,500.00</span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Fashion Accessories</h1>
+            <p>Complete your look with our curated collection of premium accessories. From statement jewelry to functional bags, find the perfect pieces to express your unique style and elevate every outfit.</p>
+            
+            <div class="hero-features">
+                <div class="feature-item">
+                    <div class="feature-icon">👜</div>
+                    <div class="feature-title">Premium Bags</div>
+                    <div class="feature-description">Handcrafted leather goods and designer bags</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">💎</div>
+                    <div class="feature-title">Fine Jewelry</div>
+                    <div class="feature-description">Elegant pieces for every occasion</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🕶️</div>
+                    <div class="feature-title">Eyewear</div>
+                    <div class="feature-description">Designer sunglasses and optical frames</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">⌚</div>
+                    <div class="feature-title">Timepieces</div>
+                    <div class="feature-description">Luxury watches and smart wearables</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section class="categories-section">
+            <h2 class="section-title">Shop by Category</h2>
+            
+            <div class="categories-grid">
+                <a href="#bags" class="category-card">
+                    <div class="category-image" style="background: linear-gradient(45deg, #8b4513, #a0522d), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 250 180%22><rect fill=%22%238b4513%22 width=%22250%22 height=%22180%22/><rect fill=%22%23a0522d%22 x=%2250%22 y=%2240%22 width=%22150%22 height=%22100%22 rx=%2210%22/><rect fill=%22%23654321%22 x=%22110%22 y=%2220%22 width=%2230%22 height=%2220%22 rx=%225%22/><text x=%22125%22 y=%22100%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2218%22 font-weight=%22bold%22>BAG</text></svg>')">
+                        <div class="category-overlay">
+                            <div class="category-title">Bags & Purses</div>
+                            <div class="category-count">25+ Products</div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#jewelry" class="category-card">
+                    <div class="category-image" style="background: linear-gradient(45deg, #ffd700, #ffed4e), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 250 180%22><rect fill=%22%23ffd700%22 width=%22250%22 height=%22180%22/><circle cx=%22125%22 cy=%2290%22 r=%2240%22 fill=%22%23ffed4e%22 stroke=%22%23daa520%22 stroke-width=%223%22/><circle cx=%22125%22 cy=%2290%22 r=%2220%22 fill=%22%23ffffff%22/><text x=%22125%22 y=%22160%22 text-anchor=%22middle%22 fill=%22%238b4513%22 font-size=%2216%22 font-weight=%22bold%22>JEWELRY</text></svg>')">
+                        <div class="category-overlay">
+                            <div class="category-title">Jewelry</div>
+                            <div class="category-count">40+ Products</div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#sunglasses" class="category-card">
+                    <div class="category-image" style="background: linear-gradient(45deg, #2c3e50, #34495e), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 250 180%22><rect fill=%22%232c3e50%22 width=%22250%22 height=%22180%22/><ellipse cx=%2280%22 cy=%2290%22 rx=%2235%22 ry=%2225%22 fill=%22%2334495e%22/><ellipse cx=%22170%22 cy=%2290%22 rx=%2235%22 ry=%2225%22 fill=%22%2334495e%22/><rect x=%22115%22 y=%2285%22 width=%2220%22 height=%2210%22 fill=%22%2334495e%22/><text x=%22125%22 y=%22160%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2216%22 font-weight=%22bold%22>EYEWEAR</text></svg>')">
+                        <div class="category-overlay">
+                            <div class="category-title">Sunglasses</div>
+                            <div class="category-count">18+ Products</div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#watches" class="category-card">
+                    <div class="category-image" style="background: linear-gradient(45deg, #e67e22, #f39c12), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 250 180%22><rect fill=%22%23e67e22%22 width=%22250%22 height=%22180%22/><circle cx=%22125%22 cy=%2290%22 r=%2235%22 fill=%22%23f39c12%22 stroke=%22%23d68910%22 stroke-width=%223%22/><line x1=%22125%22 y1=%2290%22 x2=%22125%22 y2=%2270%22 stroke=%22%23ffffff%22 stroke-width=%223%22/><line x1=%22125%22 y1=%2290%22 x2=%22140%22 y2=%2290%22 stroke=%22%23ffffff%22 stroke-width=%222%22/><text x=%22125%22 y=%22160%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2216%22 font-weight=%22bold%22>WATCHES</text></svg>')">
+                        <div class="category-overlay">
+                            <div class="category-title">Watches</div>
+                            <div class="category-count">15+ Products</div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#hats" class="category-card">
+                    <div class="category-image" style="background: linear-gradient(45deg, #27ae60, #2ecc71), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 250 180%22><rect fill=%22%2327ae60%22 width=%22250%22 height=%22180%22/><ellipse cx=%22125%22 cy=%22120%22 rx=%2270%22 ry=%2215%22 fill=%22%232ecc71%22/><ellipse cx=%22125%22 cy=%22100%22 rx=%2250%22 ry=%2230%22 fill=%22%232ecc71%22/><ellipse cx=%22125%22 cy=%2290%22 rx=%2245%22 ry=%2025%22 fill=%22%2334d970%22/><text x=%22125%22 y=%22160%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2216%22 font-weight=%22bold%22>HATS</text></svg>')">
+                        <div class="category-overlay">
+                            <div class="category-title">Hats & Caps</div>
+                            <div class="category-count">20+ Products</div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#belts" class="category-card">
+                    <div class="category-image" style="background: linear-gradient(45deg, #8e44ad, #9b59b6), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 250 180%22><rect fill=%22%238e44ad%22 width=%22250%22 height=%22180%22/><rect x=%2230%22 y=%2280%22 width=%22190%22 height=%2220%22 rx=%2210%22 fill=%22%239b59b6%22/><rect x=%22190%22 y=%2275%22 width=%2230%22 height=%2230%22 rx=%225%22 fill=%22%23a569bd%22/><circle cx=%22205%22 cy=%2290%22 r=%228%22 fill=%22%238e44ad%22/><text x=%22125%22 y=%22160%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2216%22 font-weight=%22bold%22>BELTS</text></svg>')">
+                        <div class="category-overlay">
+                            <div class="category-title">Belts</div>
+                            <div class="category-count">12+ Products</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Filter Section -->
+        <section class="filter-section">
+            <div class="filter-controls">
+                <div class="filter-group">
+                    <label for="category">Category</label>
+                    <select id="category">
+                        <option value="">All Categories</option>
+                        <option value="bags">Bags & Purses</option>
+                        <option value="jewelry">Jewelry</option>
+                        <option value="sunglasses">Sunglasses</option>
+                        <option value="watches">Watches</option>
+                        <option value="hats">Hats & Caps</option>
+                        <option value="belts">Belts</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="price-range">Price Range</label>
+                    <select id="price-range">
+                        <option value="">All Prices</option>
+                        <option value="0-50">$0 - $50</option>
+                        <option value="50-100">$50 - $100</option>
+                        <option value="100-250">$100 - $250</option>
+                        <option value="250+">$250+</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="brand">Brand</label>
+                    <select id="brand">
+                        <option value="">All Brands</option>
+                        <option value="stylehub">StyleHub Original</option>
+                        <option value="luxury">Luxury Collection</option>
+                        <option value="street">Street Edition</option>
+                        <option value="eco">Eco-Friendly</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="color">Color</label>
+                    <select id="color">
+                        <option value="">All Colors</option>
+                        <option value="black">Black</option>
+                        <option value="brown">Brown</option>
+                        <option value="gold">Gold</option>
+                        <option value="silver">Silver</option>
+                        <option value="multicolor">Multi-Color</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products -->
+        <section class="products-section" id="featured">
+            <h2 class="section-title">Featured Accessories</h2>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(45deg, #8b4513, #a0522d), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 250%22><rect fill=%22%238b4513%22 width=%22280%22 height=%22250%22/><rect fill=%22%23a0522d%22 x=%2260%22 y=%2260%22 width=%22160%22 height=%22130%22 rx=%2215%22/><rect fill=%22%23654321%22 x=%22125%22 y=%2230%22 width=%2230%22 height=%2230%22 rx=%225%22/><circle cx=%22195%22 cy=%22100%22 r=%2215%22 fill=%22%23ffd700%22/><text x=%22140%22 y=%22130%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22>LUXURY</text></svg>')">
+                        <div class="product-badge premium">Premium</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Handbags</div>
+                        <h3 class="product-title">Luxury Leather Tote</h3>
+                        <p class="product-description">Handcrafted Italian leather tote with gold hardware and silk lining. Perfect for work or weekend.</p>
+                        <div class="product-features">
+                            <span class="feature-tag">Italian Leather</span>
+                            <span class="feature-tag">Handcrafted</span>
+                            <span class="feature-tag">Gold Hardware</span>
+                        </div>
+                        <div class="product-rating">
+                            <div class="stars">★★★★★</div>
+                            <span class="rating-text">(4.9) 67 reviews</span>
+                        </div>
+                        <div class="product-price">$349.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Luxury Leather Tote', 349.99)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(45deg, #2c3e50, #34495e), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 250%22><rect fill=%22%232c3e50%22 width=%22280%22 height=%22250%22/><ellipse cx=%22100%22 cy=%22125%22 rx=%2245%22 ry=%2330%22 fill=%22%2334495e%22 stroke=%22%23ffffff%22 stroke-width=%222%22/><ellipse cx=%22180%22 cy=%22125%22 rx=%2245%22 ry=%2230%22 fill=%22%2334495e%22 stroke=%22%23ffffff%22 stroke-width=%222%22/><rect x=%22145%22 y=%22115%22 width=%2215%22 height=%2220%22 fill=%22%2334495e%22/><text x=%22140%22 y=%22220%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2218%22 font-weight=%22bold%22>AVIATOR</text></svg>')">
+                        <div class="product-badge hot">Hot</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Sunglasses</div>
+                        <h3 class="product-title">Classic Aviator Sunglasses</h3>
+                        <p class="product-description">Timeless aviator design with polarized lenses and titanium frame. UV400 protection included.</p>
+                        <div class="product-features">
+                            <span class="feature-tag">Polarized</span>
+                            <span class="feature-tag">UV400</span>
+                            <span class="feature-tag">Titanium Frame</span>
+                        </div>
+                        <div class="product-rating">
+                            <div class="stars">★★★★☆</div>
+                            <span class="rating-text">(4.6) 234 reviews</span>
+                        </div>
+                        <div class="product-price">$199.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Classic Aviator Sunglasses', 199.99)">Add to Cart</button>

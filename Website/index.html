@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fems-Hub - Premium Fashion Store</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .balance-display {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Hero Slideshow */
+        .hero-slider {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 20px;
+            margin: 2rem 0;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide-content {
+            text-align: center;
+            color: white;
+            background: rgba(0,0,0,0.5);
+            padding: 3rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .slide-content h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .slide-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255,107,107,0.4);
+        }
+
+        /* Slider Navigation */
+        .slider-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .nav-dot.active {
+            background: white;
+        }
+
+        /* Products Section */
+        .products-section {
+            margin: 4rem 0;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .product-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            background-image: url("image1.jpg");
+
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #ff6b6b;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .product-info {
+            padding: 0.5rem;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .add-to-cart:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem 0;
+            margin-top: 4rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .slide-content h2 {
+                font-size: 2rem;
+            }
+            
+            .slide-content {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">StyleHub</div>
+            <ul class="nav-links">
+                     <li><a href="index.html">Home</a></li>
+                     <li><a href="products.html">Products</a></li>
+                     <li><a href="about.html">About </a></li>
+                     <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+            <div class="balance-display">
+                Balance: $<span id="balance">2,500.00</span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Hero Slideshow -->
+        <section class="hero-slider">
+            <div class="slide active" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 800 400%22><rect fill=%22%23667eea%22 width=%22800%22 height=%22400%22/><rect fill=%22%23764ba2%22 x=%22200%22 y=%22100%22 width=%22400%22 height=%22200%22 rx=%2220%22/><text x=%22400%22 y=%22210%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2240%22 font-weight=%22bold%22>Premium Hoodies</text></svg>')">
+                <div class="slide-content">
+                    <h2>Premium Hoodies Collection</h2>
+                    <p>Discover our latest range of comfortable and stylish hoodies</p>
+                   <li><a href="Premium hoodies.html" class="cta-button">Shop Now</a></li>
+                </div>
+            </div>
+            
+            <div class="slide" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 800 400%22><rect fill=%22%23ff6b6b%22 width=%22800%22 height=%22400%22/><rect fill=%22%23ee5a24%22 x=%22150%22 y=%2280%22 width=%22500%22 height=%22240%22 rx=%2230%22/><text x=%22400%22 y=%22210%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2240%22 font-weight=%22bold%22>Fashion Accessories</text></svg>')">
+                <div class="slide-content">
+                    <h2>Fashion Accessories</h2>
+                    <p>Complete your look with our premium accessories collection</p>
+                    <li><a href="Fashion.html" class="cta-button">Explore</a></li>
+                     
+                     
+                  
+                </div>
+            </div>
+            
+            <div class="slide" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 800 400%22><rect fill=%22%23a8e6cf%22 width=%22800%22 height=%22400%22/><rect fill=%22%2388d8a3%22 x=%22100%22 y=%2260%22 width=%22600%22 height=%22280%22 rx=%2240%22/><text x=%22400%22 y=%22210%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2240%22 font-weight=%22bold%22>Summer Sale</text></svg>')">
+                <div class="slide-content">
+                    <h2>Summer Sale</h2>
+                    <p>Up to 50% off on selected items. Limited time offer!</p>
+                   <li><a href="Summer sales.html" class="cta-button">Get Deals</a></li>
+                </div>
+            </div>
+            
+            <div class="slider-nav">
+                <div class="nav-dot active" data-slide="0"></div>
+                <div class="nav-dot" data-slide="1"></div>
+                <div class="nav-dot" data-slide="2"></div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section class="products-section" id="products">
+            <h2 class="section-title">Featured Products</h2>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(45deg, #667eea, #764ba2), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23667eea%22 width=%22200%22 height=%22200%22/><rect fill=%22%23764ba2%22 x=%2250%22 y=%2250%22 width=%22100%22 height=%22100%22 rx=%2210%22/><text x=%22100%22 y=%22110%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2216%22>hoodie</text></svg>')">
+                        <div class="product-badge">New</div>
+                    </div>
+                    <div class="product-info">
+                           <img src="hoodie.jpg"></img> 
+                        <h3 class="product-title">Classic Blue Hoodie</h3>
+                        <p class="product-price">$89.99</p>
+                        <button class="add-to-cart" onclick="addToCart('Classic Blue Hoodie', 89.99)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(45deg, #ff6b6b, #ee5a24), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23ff6b6b%22 width=%22200%22 height=%22200%22/><rect fill=%22%23ee5a24%22 x=%2250%22 y=%2250%22 width=%22100%22 height=%22100%22 rx=%2210%22/><text x=%22100%22 y=%22110%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2216%22>Hoodie</text></svg>')">
+                        <div class="product-badge">Hot</div>
+                    </div>
+                    <div class="product-info">
+                        <img src="hoodie1.jpg"></img> 
+                        <h3 class="product-title">Fire Red Hoodie</h3>
+                        <p class="product-price">$94.99</p>
+                        <button class="add-to-cart" onclick="addToCart('Fire Red Hoodie', 94.99)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(45deg, #a8e6cf, #88d8a3), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23a8e6cf%22 width=%22200%22 height=%22200%22/><circle cx=%22100%22 cy=%22100%22 r=%2250%22 fill=%22%2388d8a3%22/><text x=%22100%22 y=%22110%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2216%22>Cap</text></svg>')">
+                        <div class="product-badge">Sale</div>
+                    </div>
+                    <div class="product-info">
+                        <img src="baseball.jpg"></img> 
+                        <h3 class="product-title">Green Baseball Cap</h3>
+                        <p class="product-price">$29.99</p>
+                        <button class="add-to-cart" onclick="addToCart('Green Baseball Cap', 29.99)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(45deg, #ffd93d, #ff8f5a), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23ffd93d%22 width=%22200%22 height=%22200%22/><rect fill=%22%23ff8f5a%22 x=%2250%22 y=%2270%22 width=%22100%22 height=%2260%22 rx=%225%22/><text x=%22100%22 y=%22110%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2214%22>Backpack</text></svg>')">
+                    </div>
+                    <div class="product-info">
+                         <img src="hoodie4.jpg"></img> 
+                        <h3 class="product-title">Original baseball cap</h3>
+                       
+                        <p class="product-price">$149.99</p>
+                        <button class="add-to-cart" onclick="addToCart('Urban Backpack', 149.99)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(45deg, #667eea, #764ba2), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23667eea%22 width=%22200%22 height=%22200%22/><rect fill=%22%23764ba2%22 x=%2240%22 y=%2260%22 width=%22120%22 height=%2280%22 rx=%2210%22/><text x=%22100%22 y=%22110%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2216%22>T-Shirt</text></svg>')">
+                    </div>
+                    <div class="product-info">
+                         <img src="hoodie2.jpg"></img> 
+                        <h3 class="product-title">Premium white hoodie</h3>
+                       
+                        <p class="product-price">$39.99</p>
+                        <button class="add-to-cart" onclick="addToCart('Premium T-Shirt', 39.99)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(45deg, #ff9a9e, #fecfef), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23ff9a9e%22 width=%22200%22 height=%22200%22/><ellipse cx=%22100%22 cy=%22100%22 rx=%2260%22 ry=%2240%22 fill=%22%23fecfef%22/><text x=%22100%22 y=%22110%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2214%22>Sunglasses</text></svg>')">
+                    
+                        <div class="product-badge">New</div>
+                    </div>
+                    <div class="product-info">
+                         <img src="hoodie3.jpg"></img> 
+                        <h3 class="product-title">Plain Green Hoodie</h3>
+                        <p class="product-price">$199.99</p>
+                        <button class="add-to-cart" onclick="addToCart('Designer Sunglasses', 199.99)">Add to Cart</button>
+                    </div>
+                 
+
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 StyleHub. All rights reserved. | Premium Fashion & Accessories</p>
+        </div>
+    </footer>
+
+    <script>
+        // Slideshow functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const navDots = document.querySelectorAll('.nav-dot');
+
+        function showSlide(index) {
+            slides[currentSlide].classList.remove('active');
+            navDots[currentSlide].classList.remove('active');
+            
+            currentSlide = index;
+            
+            slides[currentSlide].classList.add('active');
+            navDots[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            const nextIndex = (currentSlide + 1) % slides.length;
+            showSlide(nextIndex);
+        }
+
+        // Auto-advance slideshow
+        setInterval(nextSlide, 5000);
+
+        // Navigation dots click handlers
+        navDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => showSlide(index));
+        });
+
+        // Balance and cart functionality
+        let balance = 2500.00;
+        let cart = [];
+
+        function updateBalance() {
+            document.getElementById('balance').textContent = balance.toFixed(2);
+        }
+
+        function addToCart(productName, price) {
+            if (balance >= price) {
+                balance -= price;
+                cart.push({name: productName, price: price});
+                updateBalance();
+                
+                // Show success animation
+                const button = event.target;
+                const originalText = button.textContent;
+                button.textContent = 'Added!';
+                button.style.background = 'linear-gradient(45deg, #2ecc71, #27ae60)';
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = 'linear-gradient(45deg, #667eea, #764ba2)';
+                }, 1000);
+                
+                // Show purchase notification
+                showNotification(`${productName} added to cart! New balance: $${balance.toFixed(2)}`);
+            } else {
+                showNotification('Insufficient balance!', 'error');
+            }
+        }
+
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? 'linear-gradient(45deg, #2ecc71, #27ae60)' : 'linear-gradient(45deg, #e74c3c, #c0392b)'};
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                z-index: 10000;
+                transform: translateX(400px);
+                transition: transform 0.3s ease;
+                max-width: 300px;
+                font-weight: bold;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => notification.style.transform = 'translateX(0)', 100);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(400px)';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add some interactive hover effects
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

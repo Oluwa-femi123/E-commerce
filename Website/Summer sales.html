@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summer Sale - Up to 50% Off | StyleHub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #a8e6cf 0%, #88d8a3 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #a8e6cf, #88d8a3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #88d8a3;
+        }
+
+        .balance-display {
+            background: linear-gradient(45deg, #a8e6cf, #88d8a3);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Sale Banner */
+        .sale-banner {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        /* Hero Section */
+        .hero {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            margin: 2rem 0;
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #a8e6cf10, #88d8a310);
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero .discount {
+            font-size: 6rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 1rem 0;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .countdown-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            min-width: 100px;
+        }
+
+        .countdown-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .countdown-label {
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 1.5rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 2rem;
+            box-shadow: 0 10px 30px rgba(231, 76, 60, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(231, 76, 60, 0.4);
+        }
+
+        /* Deals Categories */
+        .deals-categories {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            margin: 2rem 0;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, #a8e6cf, #88d8a3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .category-deal {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .category-deal:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .category-image {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #e74c3c;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .category-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .category-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .category-description {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .items-count {
+            font-size: 0.9rem;
+            color: #88d8a3;
+            font-weight: 600;
+        }
+
+        /* Flash Deals */
+        .flash-deals {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            margin: 2rem 0;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .flash-timer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .flash-icon {
+            font-size: 2rem;
+            animation: flash 1s infinite;
+        }
+
+        @keyframes flash {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .product-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .sale-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #e74c3c;
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 3px 10px rgba(231, 76, 60, 0.3);
+        }
+
+        .limited-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #f39c12;
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.7; }
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-category {
+            font-size: 0.9rem;
+            color: #88d8a3;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .product-description {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stars {
+            color: #ffd700;
+        }
+
+        .rating-text {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .sale-price {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        .original-price {
+            font-size: 1.2rem;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .savings {
+            background: #2ecc71;
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .stock-info {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 0.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #856404;
+        }
+
+        .stock-bar {
+            background: #e0e0e0;
+            height: 6px;
+            border-radius: 3px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+
+        .stock-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            transition: width 0.3s ease;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .add-to-cart:hover {
+            transform: scale(1.05);
+        }
+
+        .add-to-cart:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Newsletter Signup */
+        .newsletter-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            margin: 3rem 0;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 2rem auto 0;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: #88d8a3;
+        }
+
+        .newsletter-btn {
+            background: linear-gradient(45deg, #88d8a3, #a8e6cf);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem 0;
+            margin-top: 4rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .discount {
+                font-size: 4rem;
+            }
+            
+            .countdown-timer {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sale-banner">
+        🔥 SUMMER SALE NOW LIVE! Up to 50% OFF Everything + FREE Shipping! Limited Time Only! 🔥
+    </div>
+
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">StyleHub</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="balance-display">
+                Balance: $<span id="balance">2,500.00</span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Summer Sale</h1>
+            <div class="discount">UP TO 50% OFF</div>
+            <p>The hottest deals of the season are here! Don't miss out on incredible savings across our entire collection. From premium hoodies to fashion accessories - everything must go!</p>
+            
+            <div class="countdown-timer">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">07</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">23</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">45</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">12</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+            
+            <a href="#deals" class="cta-button">Shop Sale Now</a>
+        </section>
+
+        <!-- Deal Categories -->
+        <section class="deals-categories">
+            <h2 class="section-title">Shop by Category</h2>
+            
+            <div class="categories-grid">
+                <div class="category-deal">
+                    <div class="category-image" style="background: linear-gradient(45deg, #667eea, #764ba2), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 250 180%22><rect fill=%22%23667eea%22 width=%22250%22 height=%22180%22/><rect fill=%22%23764ba2%22 x=%2275%22 y=%2250%22 width=%22100%22 height=%2280%22 rx=%2210%22/><text x=%22125%22 y=%22100%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22>HOODIES</text></svg>')">
+                        <div class="discount-badge">40% OFF</div>
+                    </div>
+                    <div class="category-info">
+                        <div class="category-title">Premium Hoodies</div>
+                        <div class="category-description">Cozy comfort meets summer style</div>
+                        <div class="items-count">15+ Items on Sale</div>
+                    </div>
+                </div>
+
+                <div class="category-deal">
+                    <div class="category-image" style="background: linear-gradient(45deg, #ff9a9e, #fecfef), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 250 180%22><rect fill=%22%23ff9a9e%22 width=%22250%22 height=%22180%22/><ellipse cx=%22125%22 cy=%2290%22 rx=%2260%22 ry=%2240%22 fill=%22%23fecfef%22/><text x=%22125%22 y=%22100%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2216%22 font-weight=%22bold%22>ACCESSORIES</text></svg>')">
+                        <div class="discount-badge">50% OFF</div>
+                    </div>
+                    <div class="category-info">
+                        <div class="category-title">Fashion Accessories</div>
+                        <div class="category-description">Complete your summer look</div>
+                        <div class="items-count">25+ Items on Sale</div>
+                    </div>
+                </div>
+
+                <div class="category-deal">
+                    <div class="category-image" style="background: linear-gradient(45deg, #667eea, #764ba2), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 250 180%22><rect fill=%22%23667eea%22 width=%22250%22 height=%22180%22/><rect fill=%22%23764ba2%22 x=%2260%22 y=%2260%22 width=%22130%22 height=%2260%22 rx=%2210%22/><text x=%22125%22 y=%22100%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2218%22 font-weight=%22bold%22>T-SHIRTS</text></svg>')">
+                        <div class="discount-badge">35% OFF</div>
+                    </div>
+                    <div class="category-info">
+                        <div class="category-title">Premium T-Shirts</div>
+                        <div class="category-description">Summer essentials at great prices</div>
+                        <div class="items-count">20+ Items on Sale</div>
+                    </div>
+                </div>
+
+                <div class="category-deal">
+                    <div class="category-image" style="background: linear-gradient(45deg, #2c3e50, #34495e), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 250 180%22><rect fill=%22%232c3e50%22 width=%22250%22 height=%22180%22/><rect fill=%22%2334495e%22 x=%2250%22 y=%2240%22 width=%22150%22 height=%22100%22 rx=%2215%22/><text x=%22125%22 y=%22100%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2218%22 font-weight=%22bold%22>OUTERWEAR</text></svg>')">
+                        <div class="discount-badge">30% OFF</div>
+                    </div>
+                    <div class="category-info">
+                        <div class="category-title">Light Outerwear</div>
+                        <div class="category-description">Perfect for summer evenings</div>
+                        <div class="items-count">12+ Items on Sale</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Flash Deals -->
+        <section class="flash-deals" id="deals">
+            <div class="flash-timer">
+                <span class="flash-icon">⚡</span>
+                <h2 class="section-title" style="margin: 0;">Flash Deals - Limited Time Only!</h2>
+                <span class="flash-icon">⚡</span>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(45deg, #667eea, #764ba2), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 250%22><rect fill=%22%23667eea%22 width=%22280%22 height=%22250%22/><rect fill=%22%23764ba2%22 x=%2270%22 y=%2260%22 width=%22140%22 height=%22130%22 rx=%2215%22/><text x=%22140%22 y=%22135%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22>HOODIE</text></svg>')">
+                        <div class="sale-badge">40% OFF</div>
+                        <div class="limited-badge">Only 3 left!</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Hoodies</div>
+                        <h3 class="product-title">Ocean Blue Premium Hoodie</h3>
+                        <p class="product-description">Ultra-soft organic cotton blend with fleece lining and premium construction.</p>
+                        <div class="product-rating">
+                            <div class="stars">★★★★★</div>
+                            <span class="rating-text">(4.8) 124 reviews</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="sale-price">$77.99</span>
+                            <span class="original-price">$129.99</span>
+                            <span class="savings">Save $52</span>
+                        </div>
+                        <div class="stock-info">
+                            Almost gone! Only 3 items left
+                            <div class="stock-bar">
+                                <div class="stock-fill" style="width: 15%"></div>
+                            </div>
+                        </div>
+                        <button class="add-to-cart" onclick="addToCart('Ocean Blue Premium Hoodie (Sale)', 77.99)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(45deg, #ff9a9e, #fecfef), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 250%22><rect fill=%22%23ff9a9e%22 width=%22280%22 height=%22250%22/><ellipse cx=%22140%22 cy=%22125%22 rx=%2270%22 ry=%2250%22 fill=%22%23fecfef%22/><text x=%22140%22 y=%22135%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2218%22 font-weight=%22bold%22>SUNGLASSES</text></svg>')">
+                        <div class="sale-badge">50% OFF</div>
+                        <div class="limited-badge">Hot Deal!</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Accessories</div>
+                        <h3 class="product-title">Designer Sunglasses</h3>
+                        <p class="product-description">UV protection sunglasses with stylish frame design and premium lenses.</p>
+                        <div class="product-rating">
+                            <div class="stars">★★★★☆</div>
+                            <span class="rating-text">(4.4) 92 reviews</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="sale-price">$99.99</span>
+                            <span class="original-price">$199.99</span>
+                            <span class="savings">Save $100</span>
+                        </div>
+                        <div class="stock-info">
+                            In high demand! 12 items left
+                            <div class="stock-bar">
+                                <div class="stock-fill" style="width: 60%"></div>
+                            </div>
+                        </div>
+                        <button class="add-to-cart" onclick="addToCart('Designer Sunglasses (Sale)', 99.99)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(45deg, #27ae60, #2ecc71), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 250%22><rect fill=%22%2327ae60%22 width=%22280%22 height=%22250%22/><ellipse cx=%22140%22 cy=%22180%22 rx=%2280%22 ry=%2215%22 fill=%22%232ecc71%22/><ellipse cx=%22140%22 cy=%22140%22 rx=%2270%22 ry=%2235%22 fill=%22%232ecc71%22/><text x=%22140%22 y=%22150%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22>CAP</text></svg>')">
+                        <div class="sale-badge">45% OFF</div>
+                        <div class="limited-badge">Best Seller!</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Accessories</div>
+                        <h3 class="product-title">Green Baseball Cap</h3>
+                        <p class="product

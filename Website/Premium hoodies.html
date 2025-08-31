@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Hoodies Collection - StyleHub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .balance-display {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            margin: 2rem 0;
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #667eea10, #764ba210);
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .filter-controls {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .filter-group label {
+            font-weight: 600;
+            color: #555;
+        }
+
+        .filter-group select {
+            padding: 0.8rem 1.2rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .filter-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        /* Products Section */
+        .products-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            margin: 2rem 0;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .product-image {
+            height: 280px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .product-badge.new {
+            background: #2ecc71;
+        }
+
+        .product-badge.hot {
+            background: #f39c12;
+        }
+
+        .product-badge.sale {
+            background: #e74c3c;
+        }
+
+        .product-badge.premium {
+            background: #9b59b6;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-category {
+            font-size: 0.9rem;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .product-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .product-description {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .product-features {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .feature-tag {
+            background: #f8f9fa;
+            color: #667eea;
+            padding: 0.3rem 0.6rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stars {
+            color: #ffd700;
+        }
+
+        .rating-text {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .product-price {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .original-price {
+            font-size: 1.2rem;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .add-to-cart:hover {
+            transform: scale(1.05);
+        }
+
+        /* Size Guide */
+        .size-guide {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .size-chart {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .size-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .size-label {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .size-measurements {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem 0;
+            margin-top: 4rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .filter-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">StyleHub</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="balance-display">
+                Balance: $<span id="balance">2,500.00</span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Premium Hoodies Collection</h1>
+            <p>Discover our curated selection of the finest hoodies, crafted with premium materials and designed for ultimate comfort and style. Each piece represents the perfect blend of luxury and streetwear.</p>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Unique Designs</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Organic Cotton</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">4.9★</div>
+                    <div class="stat-label">Customer Rating</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filter Section -->
+        <section class="filter-section">
+            <div class="filter-controls">
+                <div class="filter-group">
+                    <label for="size">Size</label>
+                    <select id="size">
+                        <option value="">All Sizes</option>
+                        <option value="xs">XS</option>
+                        <option value="s">S</option>
+                        <option value="m">M</option>
+                        <option value="l">L</option>
+                        <option value="xl">XL</option>
+                        <option value="xxl">XXL</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="color">Color</label>
+                    <select id="color">
+                        <option value="">All Colors</option>
+                        <option value="black">Black</option>
+                        <option value="white">White</option>
+                        <option value="grey">Grey</option>
+                        <option value="blue">Blue</option>
+                        <option value="red">Red</option>
+                        <option value="purple">Purple</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="style">Style</label>
+                    <select id="style">
+                        <option value="">All Styles</option>
+                        <option value="pullover">Pullover</option>
+                        <option value="zip">Zip-Up</option>
+                        <option value="oversized">Oversized</option>
+                        <option value="cropped">Cropped</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="price-range">Price Range</label>
+                    <select id="price-range">
+                        <option value="">All Prices</option>
+                        <option value="50-100">$50 - $100</option>
+                        <option value="100-150">$100 - $150</option>
+                        <option value="150-200">$150 - $200</option>
+                        <option value="200+">$200+</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section class="products-section">
+            <h2 class="section-title">Premium Hoodies</h2>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(45deg, #667eea, #764ba2), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 300 280%22><rect fill=%22%23667eea%22 width=%22300%22 height=%22280%22/><rect fill=%22%23764ba2%22 x=%2275%22 y=%2270%22 width=%22150%22 height=%22140%22 rx=%2220%22/><text x=%22150%22 y=%22150%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2224%22 font-weight=%22bold%22>PREMIUM</text></svg>')">
+                        <div class="product-badge new">New</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Pullover Hoodie</div>
+                        <h3 class="product-title">Ocean Blue Premium Hoodie</h3>
+                        <p class="product-description">Ultra-soft organic cotton blend with fleece lining. Features our signature embroidered logo and kangaroo pocket.</p>
+                        <div class="product-features">
+                            <span class="feature-tag">Organic Cotton</span>
+                            <span class="feature-tag">Fleece Lined</span>
+                            <span class="feature-tag">Unisex</span>
+                        </div>
+                        <div class="product-rating">
+                            <div class="stars">★★★★★</div>
+                            <span class="rating-text">(4.8) 124 reviews</span>
+                        </div>
+                        <div class="product-price">
+                            $129.99
+                        </div>
+                        <button class="add-to-cart" onclick="addToCart('Ocean Blue Premium Hoodie', 129.99)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(45deg, #2c3e50, #34495e), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 300 280%22><rect fill=%22%232c3e50%22 width=%22300%22 height=%22280%22/><rect fill=%22%2334495e%22 x=%2275%22 y=%2270%22 width=%22150%22 height=%22140%22 rx=%2220%22/><text x=%22150%22 y=%22150%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2224%22 font-weight=%22bold%22>MIDNIGHT</text></svg>')">
+                        <div class="product-badge premium">Premium</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Zip-Up Hoodie</div>
+                        <h3 class="product-title">Midnight Black Zip Hoodie</h3>
+                        <p class="product-description">Luxurious heavyweight cotton with YKK zipper. Perfect for layering with a modern slim fit design.</p>
+                        <div class="product-features">
+                            <span class="feature-tag">YKK Zipper</span>
+                            <span class="feature-tag">Heavyweight</span>
+                            <span class="feature-tag">Slim Fit</span>
+                        </div>
+                        <div class="product-rating">
+                            <div class="stars">★★★★★</div>
+                            <span class="rating-text">(4.9) 89 reviews</span>
+                        </div>
+                        <div class="product-price">
+                            $149.99
+                        </div>
+                        <button class="add-to-cart" onclick="addToCart('Midnight Black Zip Hoodie', 149.99)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(45deg, #e74c3c, #c0392b), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 300 280%22><rect fill=%22%23e74c3c%22 width=%22300%22 height=%22280%22/><rect fill=%22%23c0392b%22 x=%2275%22 y=%2270%22 width=%22150%22 height=%22140%22 rx=%2220%22/><text x=%22150%22 y=%22150%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2224%22 font-weight=%22bold%22>CRIMSON</text></svg>')">
+                        <div class="product-badge hot">Hot</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Oversized Hoodie</div>
+                        <h3 class="product-title">Crimson Red Oversized Hoodie</h3>
+                        <p class="product-description">Statement oversized fit with dropped shoulders. Made from premium French terry for ultimate comfort.</p>
+                        <div class="product-features">
+                            <span class="feature-tag">French Terry</span>
+                            <span class="feature-tag">Oversized Fit</span>
+                            <span class="feature-tag">Statement</span>
+                        </div>
+                        <div class="product-rating">
+                            <div class="stars">★★★★☆</div>
+                            <span class="rating-text">(4.6) 203 reviews</span>
+                        </div>
+                        <div class="product-price">
+                            $139.99
+                        </div>
+                        <button class="add-to-cart" onclick="addToCart('Crimson Red Oversized Hoodie', 139.99)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(45deg, #27ae60, #2ecc71), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 300 280%22><rect fill=%22%2327ae60%22 width=%22300%22 height=%22280%22/><rect fill=%22%232ecc71%22 x=%2275%22 y=%2270%22 width=%22150%22 height=%22140%22 rx=%2220%22/><text x=%22150%22 y=%22150%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2224%22 font-weight=%22bold%22>ECO</text></svg>')">
+                        <div class="product-badge new">Eco</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Eco-Friendly Hoodie</div>
+                        <h3 class="product-title">Forest Green Eco Hoodie</h3>
+                        <p class="product-description">100% recycled materials with natural dyes. Our most sustainable hoodie without compromising on quality.</p>
+                        <div class="product-features">
+                            <span class="feature-tag">Recycled</span>
+                            <span class="feature-tag">Natural Dyes</span>
+                            <span class="feature-tag">Sustainable</span>
+                        </div>
+                        <div class="product-rating">
+                            <div class="stars">★★★★★</div>
+                            <span class="rating-text">(4.7) 156 reviews</span>
+                        </div>
+                        <div class="product-price">
+                            $119.99
+                        </div>
+                        <button class="add-to-cart" onclick="addToCart('Forest Green Eco Hoodie', 119.99)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(45deg, #f39c12, #e67e22), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 300 280%22><rect fill=%22%23f39c12%22 width=%22300%22 height=%22280%22/><rect fill=%22%23e67e22%22 x=%2275%22 y=%2270%22 width=%22150%22 height=%22140%22 rx=%2220%22/><text x=%22150%22 y=%22150%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2224%22 font-weight=%22bold%22>GOLD</text></svg>')">
+                        <div class="product-badge sale">Sale</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Limited Edition</div>
+                        <h3 class="product-title">Golden Hour Limited Hoodie</h3>
+                        <p class="product-description">Limited edition design with metallic accents. Features heat-pressed graphics and premium construction.</p>
+                        <div class="product-features">
+                            <span class="feature-tag">Limited Edition</span>
+                            <span class="feature-tag">Metallic Accents</span>
+                            <span class="feature-tag">Heat-Pressed</span>
+                        </div>
+                        <div class="product-rating">
+                            <div class="stars">★★★★☆</div>
+                            <span class="rating-text">(4.5) 67 reviews</span>
+                        </div>
+                        <div class="product-price">
+                            $159.99 <span class="original-price">$199.99</span>
+                        </div>
+                        <button class="add-to-cart" onclick="addToCart('Golden Hour Limited Hoodie', 159.99)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(45deg, #9b59b6, #8e44ad), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 300 280%22><rect fill=%22%239b59b6%22 width=%22300%22 height=%22280%22/><rect fill=%22%238e44ad%22 x=%2275%22 y=%2270%22 width=%22150%22 height=%22140%22 rx=%2220%22/><text x=%22150%22 y=%22150%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2224%22 font-weight=%22bold%22>VIOLET</text></svg>')">
+                        <div class="product-badge premium">Premium</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Designer Hoodie</div>
+                        <h3 class="product-title">Violet Dreams Designer Hoodie</h3>
+                        <p class="product-description">Collaboration with renowned street artist. Features unique artwork and luxury finishing touches.</p>
+                        <div class="product-features">
+                            <span class="feature-tag">Artist Collab</span>
+                            <span class="feature-tag">Unique Art</span>
+                            <span class="feature-tag">Luxury</span>
+                        </div>
+                        <div class="product-rating">
+                            <div class="stars">★★★★★</div>
+                            <span class="rating-text">(4.8) 92 reviews</span>
+                        </div>
+                        <div class="product-price">
+                            $189.99
+                        </div>
+                        <button class="add-to-cart" onclick="addToCart('Violet Dreams Designer Hoodie', 189.99)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Size Guide -->
+        <section class="size-guide">
+            <h2 class="section-title">Size Guide</h2>
+            <p style="color: #666; margin-bottom: 2rem;">Find your perfect fit with our comprehensive size chart</p>
+            
+            <div class="size-chart">
+                <div class="size-item">
+                    <div class="size-label">XS</div>
+                    <div class="size-measurements">Chest: 32-34"<br>Length: 25"</div>
+                </div>
+                <div class="size-item">
+                    <div class="size-label">S</div>
+                    <div class="size-measurements">Chest: 35-37"<br>Length: 26"</div>
+                </div>
+                <div class="size-item">
+                    <div class="size-label">M</div>
+                    <div class="size-measurements">Chest: 38-40"<br>Length: 27"</div>
+                </div>
+                <div class="size-item">
+                    <div class="size-label">L</div>
+                    <div class="size-measurements">Chest: 41-43"<br>Length: 28"</div>
+                </div>
+                <div class="size-item">
+                    <div class="size-label">XL</div>
+                    <div class="size-measurements">Chest: 44-46"<br>Length: 29"</div>
+                </div>
+                <div class="size-item">
+                    <div class="size-label">XXL</div>
+                    <div class="size-measurements">Chest: 47-49"<br>Length: 30"</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 StyleHub. All rights reserved. | Premium Hoodies Collection</p>
+        </div>
+    </footer>
+
+    <script>
+        // Balance and cart functionality
+        let balance = 2500.00;
+        let cart = [];
+
+        function updateBalance() {
+            document.getElementById('balance').textContent = balance.toFixed(2);
+        }
+
+        function addToCart(productName, price) {
+            if (balance >= price) {
+                balance -= price;
+                cart.push({name: productName, price: price});
+                updateBalance();
+                
+                // Show success animation
+                const button = event.target;
+                const originalText = button.textContent;
+                button.textContent = 'Added!
